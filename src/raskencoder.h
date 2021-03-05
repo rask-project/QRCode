@@ -3,28 +3,28 @@
 #include <QImage>
 #include <zxing/qrcode/ErrorCorrectionLevel.h>
 
-class QtRaskEncoderConfig;
+class RaskEncoderConfig;
 
-class QtRaskEncoder
+class RaskEncoder
 {
 public:
-    explicit QtRaskEncoder() = default;
+    explicit RaskEncoder() = default;
 
     enum ErrorCorrectionLevel { L = 0, M, Q, H };
 
-    static QImage encodeData(const QString &data, QtRaskEncoderConfig config);
+    static QImage encodeData(const QString &data, RaskEncoderConfig config);
 };
 
-class QtRaskEncoderConfig
+class RaskEncoderConfig
 {
     QSize m_imageSize;
     bool m_border;
     bool m_transparent;
-    QtRaskEncoder::ErrorCorrectionLevel m_errorCorrectionLevel;
+    RaskEncoder::ErrorCorrectionLevel m_errorCorrectionLevel;
     zxing::qrcode::ErrorCorrectionLevel m_correctionLevel;
 
 public:
-    explicit QtRaskEncoderConfig();
+    explicit RaskEncoderConfig();
 
     QSize getImageSize() const;
     void setImageSize(QSize imageSize);
@@ -35,8 +35,8 @@ public:
     bool getTransparent() const;
     void setTransparent(bool transparent);
 
-    QtRaskEncoder::ErrorCorrectionLevel getErrorCorrectionLevel() const;
-    void setErrorCorrectionLevel(QtRaskEncoder::ErrorCorrectionLevel errorCorrectionLevel);
+    RaskEncoder::ErrorCorrectionLevel getErrorCorrectionLevel() const;
+    void setErrorCorrectionLevel(RaskEncoder::ErrorCorrectionLevel errorCorrectionLevel);
 
     zxing::qrcode::ErrorCorrectionLevel &getCorrectionLevel();
 };

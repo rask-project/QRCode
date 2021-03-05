@@ -1,17 +1,17 @@
-#include "qtraskqrcodeprovider.h"
-#include "qtraskencoder.h"
+#include "raskqrcodeprovider.h"
+#include "raskencoder.h"
 
 #include <QUrlQuery>
 #include <QRegularExpression>
 #include <QDebug>
 
-QtRaskQRCodeProvider::QtRaskQRCodeProvider():
+RaskQRCodeProvider::RaskQRCodeProvider():
     QQuickImageProvider(QQuickImageProvider::Image)
 {}
 
-QImage QtRaskQRCodeProvider::requestImage(const QString &id, QSize */*size*/, const QSize &requestedSize)
+QImage RaskQRCodeProvider::requestImage(const QString &id, QSize */*size*/, const QSize &requestedSize)
 {
-    QtRaskEncoderConfig config;
+    RaskEncoderConfig config;
     config.setImageSize(requestedSize);
     config.setBorder(true);
 
@@ -28,13 +28,13 @@ QImage QtRaskQRCodeProvider::requestImage(const QString &id, QSize */*size*/, co
         if (optQuery.hasQueryItem(tagCorrectionLevel)) {
             const QString correctionLevel = optQuery.queryItemValue(tagCorrectionLevel);
             if (correctionLevel == QStringLiteral("L"))
-                config.setErrorCorrectionLevel(QtRaskEncoder::ErrorCorrectionLevel::L);
+                config.setErrorCorrectionLevel(RaskEncoder::ErrorCorrectionLevel::L);
             else if (correctionLevel == QStringLiteral("M"))
-                config.setErrorCorrectionLevel(QtRaskEncoder::ErrorCorrectionLevel::M);
+                config.setErrorCorrectionLevel(RaskEncoder::ErrorCorrectionLevel::M);
             else if (correctionLevel == QStringLiteral("Q"))
-                config.setErrorCorrectionLevel(QtRaskEncoder::ErrorCorrectionLevel::Q);
+                config.setErrorCorrectionLevel(RaskEncoder::ErrorCorrectionLevel::Q);
             else if (correctionLevel == QStringLiteral("H"))
-                config.setErrorCorrectionLevel(QtRaskEncoder::ErrorCorrectionLevel::H);
+                config.setErrorCorrectionLevel(RaskEncoder::ErrorCorrectionLevel::H);
         }
 
         if (optQuery.hasQueryItem(tagBorder))
@@ -46,5 +46,5 @@ QImage QtRaskQRCodeProvider::requestImage(const QString &id, QSize */*size*/, co
         data = id.left(settingsIndex);
     }
 
-    return QtRaskEncoder::encodeData(data, config);
+    return RaskEncoder::encodeData(data, config);
 }

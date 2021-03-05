@@ -1,10 +1,10 @@
-#include "qtraskencoder.h"
+#include "raskencoder.h"
 
 #include <zxing/qrcode/encoder/QRCode.h>
 #include <zxing/qrcode/encoder/Encoder.h>
 #include <vector>
 
-QImage QtRaskEncoder::encodeData(const QString &data, QtRaskEncoderConfig config)
+QImage RaskEncoder::encodeData(const QString &data, RaskEncoderConfig config)
 {
     QImage image;
 
@@ -34,61 +34,61 @@ QImage QtRaskEncoder::encodeData(const QString &data, QtRaskEncoderConfig config
     return image;
 }
 
-QtRaskEncoderConfig::QtRaskEncoderConfig():
+RaskEncoderConfig::RaskEncoderConfig():
     m_imageSize(),
     m_border(false),
     m_transparent(false),
-    m_errorCorrectionLevel(QtRaskEncoder::ErrorCorrectionLevel::M),
+    m_errorCorrectionLevel(RaskEncoder::ErrorCorrectionLevel::M),
     m_correctionLevel(zxing::qrcode::ErrorCorrectionLevel::M)
 {}
 
-bool QtRaskEncoderConfig::getBorder() const
+bool RaskEncoderConfig::getBorder() const
 {
     return m_border;
 }
 
-void QtRaskEncoderConfig::setBorder(bool border)
+void RaskEncoderConfig::setBorder(bool border)
 {
     m_border = border;
 }
 
-bool QtRaskEncoderConfig::getTransparent() const
+bool RaskEncoderConfig::getTransparent() const
 {
     return m_transparent;
 }
 
-void QtRaskEncoderConfig::setTransparent(bool transparent)
+void RaskEncoderConfig::setTransparent(bool transparent)
 {
     m_transparent = transparent;
 }
 
-QtRaskEncoder::ErrorCorrectionLevel QtRaskEncoderConfig::getErrorCorrectionLevel() const
+RaskEncoder::ErrorCorrectionLevel RaskEncoderConfig::getErrorCorrectionLevel() const
 {
     return m_errorCorrectionLevel;
 }
 
-void QtRaskEncoderConfig::setErrorCorrectionLevel(QtRaskEncoder::ErrorCorrectionLevel errorCorrectionLevel)
+void RaskEncoderConfig::setErrorCorrectionLevel(RaskEncoder::ErrorCorrectionLevel errorCorrectionLevel)
 {
     m_errorCorrectionLevel = errorCorrectionLevel;
 }
 
-QSize QtRaskEncoderConfig::getImageSize() const
+QSize RaskEncoderConfig::getImageSize() const
 {
     return m_imageSize;
 }
 
-void QtRaskEncoderConfig::setImageSize(QSize imageSize)
+void RaskEncoderConfig::setImageSize(QSize imageSize)
 {
     m_imageSize = imageSize;
 }
 
-zxing::qrcode::ErrorCorrectionLevel &QtRaskEncoderConfig::getCorrectionLevel()
+zxing::qrcode::ErrorCorrectionLevel &RaskEncoderConfig::getCorrectionLevel()
 {
     switch (m_errorCorrectionLevel) {
-    case QtRaskEncoder::L: m_correctionLevel = zxing::qrcode::ErrorCorrectionLevel::L; break;
-    case QtRaskEncoder::M: m_correctionLevel = zxing::qrcode::ErrorCorrectionLevel::M; break;
-    case QtRaskEncoder::Q: m_correctionLevel = zxing::qrcode::ErrorCorrectionLevel::Q; break;
-    case QtRaskEncoder::H: m_correctionLevel = zxing::qrcode::ErrorCorrectionLevel::H; break;
+    case RaskEncoder::L: m_correctionLevel = zxing::qrcode::ErrorCorrectionLevel::L; break;
+    case RaskEncoder::M: m_correctionLevel = zxing::qrcode::ErrorCorrectionLevel::M; break;
+    case RaskEncoder::Q: m_correctionLevel = zxing::qrcode::ErrorCorrectionLevel::Q; break;
+    case RaskEncoder::H: m_correctionLevel = zxing::qrcode::ErrorCorrectionLevel::H; break;
     }
     return m_correctionLevel;
 }

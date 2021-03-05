@@ -14,7 +14,7 @@ Window {
         TextField {
             id: textField
 
-            text: "QtRask QRCode Generator"
+            text: "Rask QRCode Generator"
         }
 
         Image {

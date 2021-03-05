@@ -3,10 +3,10 @@
 #include <QObject>
 #include <QQuickImageProvider>
 
-class QtRaskQRCodeProvider : public QQuickImageProvider
+class RaskQRCodeProvider : public QQuickImageProvider
 {
 public:
-    explicit QtRaskQRCodeProvider();
+    explicit RaskQRCodeProvider();
 
     QImage requestImage(const QString &id, QSize *size, const QSize &requestedSize) override;
 };

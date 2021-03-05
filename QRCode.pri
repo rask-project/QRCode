@@ -3,11 +3,11 @@ INCLUDEPATH += $$PWD/src
 include($$PWD/src/thirdparty/zxing/zxing.pri)
 
 HEADERS += \
-    $$PWD/src/qtraskencoder.h \
-    $$PWD/src/qtraskqrcode.h \
-    $$PWD/src/qtraskqrcodeprovider.h \
-    $$PWD/src/QtRaskQRCode
+    $$PWD/src/raskencoder.h \
+    $$PWD/src/raskqrcode.h \
+    $$PWD/src/raskqrcodeprovider.h \
+    $$PWD/src/RaskQRCode
 
 SOURCES += \
-    $$PWD/src/qtraskencoder.cpp \
-    $$PWD/src/qtraskqrcodeprovider.cpp
+    $$PWD/src/raskencoder.cpp \
+    $$PWD/src/raskqrcodeprovider.cpp
